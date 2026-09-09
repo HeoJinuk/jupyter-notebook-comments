@@ -26,7 +26,7 @@ Activate the **Python environment running the Jupyter server** before installing
 Download and unpack the project, or clone the repository, then run:
 
 ```bash
-cd notebook-cell-comments
+cd jupyter-notebook-comments
 python install.py
 ```
 
