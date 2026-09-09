@@ -1,0 +1,5 @@
+{
+  "packageManager": "python",
+  "packageName": "notebook-cell-comments",
+  "uninstallInstructions": "python -m pip uninstall notebook-cell-comments"
+}

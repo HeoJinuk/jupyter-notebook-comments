@@ -1,0 +1,21 @@
+[build-system]
+requires = ["hatchling>=1.26"]
+build-backend = "hatchling.build"
+
+[project]
+name = "notebook-cell-comments"
+version = "0.4.1"
+description = "Cell comments stored inside .ipynb files for Jupyter Notebook 7"
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.9"
+
+[tool.hatch.build.targets.wheel]
+packages = ["notebook_cell_comments"]
+
+[tool.hatch.build.targets.wheel.shared-data]
+"notebook_cell_comments/labextension" = "share/jupyter/labextensions/notebook-cell-comments"
+"install.json" = "share/jupyter/labextensions/notebook-cell-comments/install.json"
+
+[tool.hatch.build.targets.sdist]
+include = ["src", "style", "tests", "examples", "notebook_cell_comments", "package.json", "package-lock.json", "tsconfig*.json", "pyproject.toml", "install.json", "install.py", "README.md", "README.ko.md", "CHANGELOG.md", "LICENSE"]

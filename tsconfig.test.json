@@ -1,0 +1,10 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "module": "CommonJS",
+    "rootDir": ".",
+    "outDir": "test-lib",
+    "declaration": false
+  },
+  "include": ["src/model.ts", "tests/*.test.ts"]
+}

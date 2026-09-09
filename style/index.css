@@ -1,0 +1,112 @@
+.ncc-panel {
+  display: flex;
+  flex-direction: column;
+  min-width: 280px;
+  height: 100%;
+  color: var(--jp-ui-font-color1);
+  background: var(--jp-layout-color1);
+  font-family: var(--jp-ui-font-family);
+  font-size: var(--jp-ui-font-size1);
+  overflow: hidden;
+}
+.ncc-header { padding: 18px 16px 12px; border-bottom: 1px solid var(--jp-border-color2); }
+.ncc-heading { display: flex; align-items: center; gap: 8px; }
+.ncc-heading h2 { font-size: 17px; margin: 0; font-weight: 650; }
+.ncc-total { border-radius: 12px; padding: 2px 7px; background: var(--jp-layout-color3); font-size: 11px; }
+.ncc-subtitle { color: var(--jp-ui-font-color2); margin: 8px 0 14px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ncc-button {
+  border: 1px solid var(--jp-border-color2);
+  border-radius: 5px;
+  background: var(--jp-layout-color1);
+  color: var(--jp-ui-font-color1);
+  padding: 5px 9px;
+  cursor: pointer;
+  font: inherit;
+  line-height: 1.5;
+}
+.ncc-button:hover { background: var(--jp-layout-color2); }
+.ncc-button:focus-visible, .ncc-cell-badge:focus-visible { outline: 2px solid var(--jp-brand-color1); outline-offset: 2px; }
+.ncc-button:disabled { opacity: .45; cursor: not-allowed; }
+.ncc-close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 34px;
+  width: 34px;
+  height: 34px;
+  margin-left: auto;
+  padding: 0;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  color: var(--jp-ui-font-color2);
+  background: transparent;
+}
+.ncc-close:hover { border-color: var(--jp-border-color2); }
+/* Replace Notebook 7's corner control only while our panel is active.
+   Other right-hand panels retain their native close button. */
+#jp-right-stack:has(#notebook-cell-comments-panel:not(.lm-mod-hidden)) > .jp-SidePanel-collapse {
+  display: none !important;
+  min-height: 0 !important;
+  max-height: 0 !important;
+  padding: 0;
+  border: 0;
+}
+.ncc-primary { background: var(--jp-brand-color1); border-color: var(--jp-brand-color1); color: white; }
+.ncc-primary:hover { background: var(--jp-brand-color0); color: white; }
+.ncc-header > .ncc-primary { width: 100%; }
+.ncc-filters { display: flex; gap: 5px; padding: 12px 16px; }
+.ncc-filters .ncc-button { flex: 1; border-color: transparent; color: var(--jp-ui-font-color2); }
+.ncc-filters [aria-pressed=true] { background: var(--jp-layout-color2); color: var(--jp-brand-color1); font-weight: 650; }
+.ncc-list { flex: 1; min-height: 80px; overflow-y: auto; padding: 0 12px 12px; }
+.ncc-card { border: 1px solid var(--jp-border-color2); border-radius: 7px; padding: 12px; margin-bottom: 10px; }
+.ncc-card.ncc-current { border-left: 3px solid var(--jp-brand-color1); padding-left: 10px; }
+.ncc-card:focus { outline: 2px solid var(--jp-brand-color1); outline-offset: -2px; }
+.ncc-card-top { display: flex; align-items: center; justify-content: space-between; gap: 6px; }
+.ncc-location { border: none; padding: 0; color: var(--jp-brand-color1); font-weight: 600; text-align: left; }
+.ncc-source { font-family: var(--jp-code-font-family); color: var(--jp-ui-font-color2); font-size: 11px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin: 7px 0; }
+.ncc-anchor-kind { display: block; font-size: 10px; color: var(--jp-ui-font-color2); margin: 7px 0 4px; }
+.ncc-quote, .ncc-anchor-preview {
+  display: block; box-sizing: border-box; width: 100%; margin: 6px 0 10px;
+  text-align: left; white-space: pre-wrap; overflow-wrap: anywhere;
+  max-height: 100px; overflow-y: auto; font: inherit; font-size: 11px; line-height: 1.6;
+  padding: 7px 9px; border: 0; border-left: 3px solid var(--jp-brand-color2);
+  border-radius: 0 4px 4px 0; background: var(--jp-layout-color2); color: var(--jp-ui-font-color1);
+}
+.ncc-anchor-warning { font-size: 10px; color: var(--jp-warn-color1); line-height: 1.5; margin: 4px 0; }
+/* Keep syntax and theme foreground colors unchanged. */
+.ncc-text-highlight { background-color: rgba(250, 204, 21, .38); }
+.ncc-text-highlight-active { background-color: rgba(250, 180, 21, .58); }
+::highlight(ncc-comment) { background-color: rgba(250, 204, 21, .38); }
+::highlight(ncc-comment-active) { background-color: rgba(250, 180, 21, .58); }
+.ncc-card.ncc-selected { border-color: #ca8a04; box-shadow: inset 0 0 0 1px rgba(202, 138, 4, .3); }
+.ncc-body { white-space: pre-wrap; overflow-wrap: anywhere; line-height: 1.65; margin: 12px 0; cursor: pointer; }
+.ncc-time { color: var(--jp-ui-font-color2); font-size: 10px; }
+.ncc-actions { display: flex; justify-content: flex-end; gap: 5px; margin-top: 9px; }
+.ncc-actions .ncc-button { font-size: 11px; }
+.ncc-danger { color: var(--jp-error-color1); }
+.ncc-status { white-space: nowrap; border-radius: 4px; padding: 2px 5px; color: var(--jp-success-color1); background: var(--jp-layout-color2); font-size: 10px; }
+.ncc-resolved .ncc-body { color: var(--jp-ui-font-color2); }
+.ncc-empty { text-align: center; padding: 36px 12px; color: var(--jp-ui-font-color2); line-height: 1.7; }
+.ncc-empty strong { color: var(--jp-ui-font-color1); }
+.ncc-composer { padding: 0 16px 12px; max-height: 48%; overflow-y: auto; }
+.ncc-composer[hidden] { display: none; }
+.ncc-composer-title { display: block; font-weight: 600; font-size: 12px; margin-bottom: 8px; }
+.ncc-input { box-sizing: border-box; width: 100%; min-height: 95px; resize: vertical; border: 1px solid var(--jp-border-color1); border-radius: 5px; padding: 9px; font: inherit; line-height: 1.6; color: var(--jp-ui-font-color1); background: var(--jp-input-background); }
+.ncc-input:focus { outline: 2px solid var(--jp-brand-color1); outline-offset: -1px; }
+.ncc-hint { font-size: 10px; color: var(--jp-ui-font-color2); margin: 4px 0; }
+.ncc-footer { padding: 10px 14px; border-top: 1px solid var(--jp-border-color2); font-size: 10px; color: var(--jp-ui-font-color2); }
+.ncc-notice:empty, .ncc-feedback:empty { display: none; }
+.ncc-notice, .ncc-feedback, .ncc-error { padding: 8px 14px; margin: 0; font-size: 11px; line-height: 1.6; color: var(--jp-ui-font-color2); }
+.ncc-error { color: var(--jp-error-color1); }
+.jp-Cell.ncc-has-comments { position: relative; min-height: 46px; }
+.ncc-cell-badge {
+  position: absolute; left: 8px; top: 24px; z-index: 2;
+  border: 1px solid var(--jp-brand-color1); border-radius: 9px;
+  padding: 1px 6px; color: var(--jp-brand-color1); background: var(--jp-layout-color1);
+  font-family: var(--jp-ui-font-family); font-size: 10px; cursor: pointer;
+}
+.ncc-cell-badge.ncc-all-resolved { border-color: var(--jp-border-color1); color: var(--jp-ui-font-color2); }
+@media print { .ncc-panel, .ncc-cell-badge { display: none !important; } }
+
+.ncc-math-highlight { background-color: rgba(250, 204, 21, .38); border-radius: 3px; }
+.ncc-math-highlight-active { background-color: rgba(250, 180, 21, .58); }

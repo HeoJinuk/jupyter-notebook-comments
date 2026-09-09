@@ -1,0 +1,58 @@
+{
+  "name": "notebook-cell-comments",
+  "version": "0.4.1",
+  "description": "Cell comments stored inside notebooks, for Jupyter Notebook 7",
+  "license": "MIT",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "files": [
+    "lib/**/*",
+    "style/**/*",
+    "src/**/*"
+  ],
+  "sideEffects": [
+    "style/*.css",
+    "style/index.js"
+  ],
+  "style": "style/index.css",
+  "styleModule": "style/index.js",
+  "scripts": {
+    "build": "npm run build:lib && npm run build:extension",
+    "build:lib": "tsc",
+    "build:extension": "jupyter labextension build .",
+    "test": "tsc -p tsconfig.test.json && node --test test-lib/tests/*.test.js"
+  },
+  "dependencies": {
+    "@jupyterlab/application": "~4.4.4",
+    "@jupyterlab/apputils": "~4.5.4",
+    "@jupyterlab/cells": "~4.4.4",
+    "@jupyterlab/notebook": "~4.4.4",
+    "@jupyterlab/ui-components": "~4.4.4",
+    "@lumino/signaling": "^2.1.4",
+    "@lumino/widgets": "^2.6.0",
+    "@codemirror/state": "^6.5.0",
+    "@codemirror/view": "^6.35.0",
+    "@lezer/markdown": "^1.4.0",
+    "@jupyterlab/rendermime": "~4.4.4"
+  },
+  "devDependencies": {
+    "@jupyterlab/builder": "~4.4.4",
+    "@types/node": "^22.0.0",
+    "typescript": "~5.8.3"
+  },
+  "overrides": {
+    "webpack": "5.99.9"
+  },
+  "jupyterlab": {
+    "extension": true,
+    "outputDir": "notebook_cell_comments/labextension",
+    "sharedPackages": {
+      "@codemirror/state": {
+        "singleton": true
+      },
+      "@codemirror/view": {
+        "singleton": true
+      }
+    }
+  }
+}
