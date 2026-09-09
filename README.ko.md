@@ -1,4 +1,4 @@
-# Notebook Cell Comments
+# Jupyter Notebook Comments
 
 Jupyter Notebook 7에서 셀 전체 또는 셀 안의 선택한 문장·코드에 검토용 메모를 붙이는 확장입니다.
 코드·마크다운·Raw 셀을 지원하며 메모는 `.ipynb` 파일 내부에 저장됩니다.
@@ -8,9 +8,10 @@ Jupyter Notebook 7에서 셀 전체 또는 셀 안의 선택한 문장·코드�
 현재 Jupyter Notebook 서버를 실행하는 Python/conda/venv 환경을 활성화한 뒤 설치하세요.
 노트북 커널의 환경과 서버 환경은 다를 수 있습니다.
 
-프로젝트를 다운로드해 압축을 풀거나 저장소를 복제한 뒤 실행하세요.
+저장소를 복제하고 설치 스크립트를 실행하세요.
 
 ```bash
+git clone https://github.com/HeoJinuk/jupyter-notebook-comments.git
 cd jupyter-notebook-comments
 python install.py
 ```
@@ -18,6 +19,12 @@ python install.py
 스크립트를 실행한 Python 환경에 확장을 설치하거나 업데이트합니다.
 Windows·macOS·Linux에서 사용할 수 있으며, 다른 폴더에서도 스크립트의 전체 경로로 실행할 수 있습니다.
 업데이트할 때도 최신 프로젝트를 다운로드하거나 `git pull`한 뒤 같은 명령을 실행하세요.
+
+ZIP으로 다운로드했다면 압축을 푼 폴더 안에서 `python install.py`를 실행하세요.
+
+이전 `notebook-cell-comments`에서 업데이트할 때도 이 스크립트를 사용하세요.
+새 패키지 설치가 성공한 뒤 이전 패키지를 제거해 확장 중복을 방지합니다.
+기존 메모 저장 키 `cell.metadata.notebook_cell_comments`는 유지하므로 데이터 변환이 필요하지 않습니다.
 
 빌드된 확장이 포함돼 있으므로 Node.js나 npm 빌드는 필요하지 않습니다.
 설치 중 Python 빌드 의존성을 다운로드할 수 있습니다.
@@ -35,7 +42,7 @@ jupyter notebook
 jupyter labextension list
 ```
 
-`notebook-cell-comments v0.4.1 enabled OK` 항목을 확인하세요.
+`jupyter-notebook-comments v0.5.0 enabled OK` 항목을 확인하세요.
 이 명령의 이름은 `labextension`이지만 Notebook 7의 확장 확인에도 사용합니다.
 PyPI 배포 없이 설치할 수 있습니다. 스크립트는 [pip의 로컬 프로젝트 설치](https://pip.pypa.io/en/stable/topics/local-project-installs/)를 사용합니다.
 
@@ -201,7 +208,7 @@ Notebook 7.4.4의 apputils 구성 요소는 4.5.x라서 패키지의 버전 숫�
 ## 제거
 
 ```bash
-python -m pip uninstall notebook-cell-comments
+python -m pip uninstall jupyter-notebook-comments
 ```
 
 Jupyter 서버를 다시 시작하세요. 기존 `.ipynb`에 저장된 메모 데이터는 삭제되지 않습니다.
@@ -213,3 +220,5 @@ Jupyter 서버를 다시 시작하세요. 기존 `.ipynb`에 저장된 메모 �
 - [노트북 메타데이터 형식](https://nbformat.readthedocs.io/en/stable/format_description.html)
 
 하이라이트 구현 참고: [CodeMirror decorations](https://codemirror.net/examples/decoration/), [JupyterLab 편집기 확장](https://jupyterlab.readthedocs.io/en/4.4.x/api/classes/codemirror.ExtensionsHandler.html).
+
+[수정 내용을 GitHub에 다시 올리는 방법](UPDATING.md)

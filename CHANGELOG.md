@@ -1,6 +1,10 @@
 # Changelog
 
-## Unreleased
+## 0.5.0
+
+- Rename the Python distribution, import module, frontend extension, and project title to Jupyter Notebook Comments.
+- Keep the existing notebook metadata key so saved comments remain compatible.
+- Install the renamed package before removing the legacy package during scripted upgrades.
 
 - Add `python install.py` to install or update using the current Python environment.
 - Simplify English and Korean installation instructions; no PyPI publication is needed.

@@ -44,7 +44,7 @@
 .ncc-close:hover { border-color: var(--jp-border-color2); }
 /* Replace Notebook 7's corner control only while our panel is active.
    Other right-hand panels retain their native close button. */
-#jp-right-stack:has(#notebook-cell-comments-panel:not(.lm-mod-hidden)) > .jp-SidePanel-collapse {
+#jp-right-stack:has(#jupyter-notebook-comments-panel:not(.lm-mod-hidden)) > .jp-SidePanel-collapse {
   display: none !important;
   min-height: 0 !important;
   max-height: 0 !important;

@@ -1,10 +1,10 @@
-# Notebook Cell Comments
+# Jupyter Notebook Comments
 
 Word-style review comments for **Jupyter Notebook 7**. Attach comments to a whole cell, selected text or code, and Markdown formulas. Comments are stored inside the `.ipynb` file.
 
 [한국어 안내](README.ko.md)
 
-![Notebook Cell Comments preview](preview.png)
+![Jupyter Notebook Comments preview](preview.png)
 
 ## Features
 
@@ -23,14 +23,19 @@ The add actions and toolbar tooltip are in English. Other panel controls and mes
 
 Activate the **Python environment running the Jupyter server** before installing. This may differ from the kernel environment.
 
-Download and unpack the project, or clone the repository, then run:
+Clone the repository and run:
 
 ```bash
+git clone https://github.com/HeoJinuk/jupyter-notebook-comments.git
 cd jupyter-notebook-comments
 python install.py
 ```
 
 The script installs or updates the extension in the environment of the Python interpreter running it. It works on Windows, macOS, and Linux and can also be invoked by its full path from another directory. To update, download or pull the latest project and run the same command again.
+
+For a downloaded ZIP, extract it and run `python install.py` inside the extracted folder.
+
+When upgrading from `notebook-cell-comments`, use this script: it installs the new package first, then removes the old package to prevent duplicate extensions. Existing notebook comments keep using `cell.metadata.notebook_cell_comments` and need no conversion.
 
 The prebuilt extension is included, so installation does not require Node.js or an npm build. pip may download the Python build dependencies during installation.
 
@@ -41,7 +46,7 @@ jupyter notebook
 jupyter labextension list
 ```
 
-Check for `notebook-cell-comments v0.4.1 enabled OK`.
+Check for `jupyter-notebook-comments v0.5.0 enabled OK`.
 No PyPI publication is required: the script uses pip’s [local project installation](https://pip.pypa.io/en/stable/topics/local-project-installs/) workflow.
 
 ## Use
@@ -94,7 +99,7 @@ For a GitHub release, upload the wheel from `dist/` as a release asset. The repo
 ## Uninstall
 
 ```bash
-python -m pip uninstall notebook-cell-comments
+python -m pip uninstall jupyter-notebook-comments
 ```
 
 Restart the Jupyter server. Existing comments remain in notebook metadata.
@@ -102,3 +107,5 @@ Restart the Jupyter server. Existing comments remain in notebook metadata.
 ## License
 
 [MIT](LICENSE). Bundled dependency license notices are included with the prebuilt extension.
+
+[GitHub update instructions (Korean)](UPDATING.md)

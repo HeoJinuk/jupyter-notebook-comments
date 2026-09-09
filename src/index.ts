@@ -11,12 +11,12 @@ import type { ICellModel } from '@jupyterlab/cells';
 import { Highlights } from './highlights';
 
 const commentIcon = new LabIcon({
-  name: 'notebook-cell-comments:comment',
+  name: 'jupyter-notebook-comments:comment',
   svgstr: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path class="jp-icon3" fill="#616161" d="M5 3h14a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H9l-6 4V5a2 2 0 0 1 2-2zm0 2v13.3L8.4 16H19V5H5zm3 3h8v2H8V8zm0 4h6v2H8v-2z"/></svg>'
 });
 
 const plugin: JupyterFrontEndPlugin<void> = {
-  id: 'notebook-cell-comments:plugin',
+  id: 'jupyter-notebook-comments:plugin',
   description: '셀에 검토 메모를 달고 노트북 안에 저장합니다.',
   autoStart: true,
   requires: [INotebookTracker],
@@ -38,7 +38,7 @@ const plugin: JupyterFrontEndPlugin<void> = {
       const widget = panel?.content.widgets.find(widget => widget.node === target);
       const anchor = widget ? captureSelection(widget, event.target instanceof Element ? event.target : undefined) : null;
       selected = widget && anchor ? { cell: widget.model, anchor } : null;
-      app.commands.notifyCommandChanged('notebook-cell-comments:add-selection');
+      app.commands.notifyCommandChanged('jupyter-notebook-comments:add-selection');
     }, true);
     view.title.icon = commentIcon;
     // The shared shell API works in Notebook 7 without requiring ILabShell.
@@ -49,11 +49,11 @@ const plugin: JupyterFrontEndPlugin<void> = {
       // An add/edit command must keep the composer visible.
       if (!view.isVisible) { app.shell.activateById(view.id); }
     };
-    app.commands.addCommand('notebook-cell-comments:open', {
+    app.commands.addCommand('jupyter-notebook-comments:open', {
       label: '셀 메모 패널 열기', icon: commentIcon,
       execute: () => { const panel = tracker.currentWidget; if (panel) { show(panel); } }
     });
-    app.commands.addCommand('notebook-cell-comments:add', {
+    app.commands.addCommand('jupyter-notebook-comments:add', {
       label: 'Add Cell Comment', icon: commentIcon,
       isEnabled: () => !!tracker.currentWidget && writable(tracker.currentWidget),
       execute: args => {
@@ -69,7 +69,7 @@ const plugin: JupyterFrontEndPlugin<void> = {
         if (cell) { show(panel); return view.start(cell); }
       }
     });
-    app.commands.addCommand('notebook-cell-comments:add-selection', {
+    app.commands.addCommand('jupyter-notebook-comments:add-selection', {
       label: 'Add Comment to Selection', icon: commentIcon,
       isEnabled: () => !!selected && !!tracker.currentWidget && writable(tracker.currentWidget),
       execute: () => {
@@ -82,14 +82,14 @@ const plugin: JupyterFrontEndPlugin<void> = {
       }
     });
     app.contextMenu.addItem({
-      command: 'notebook-cell-comments:add', selector: '.jp-Notebook .jp-Cell',
+      command: 'jupyter-notebook-comments:add', selector: '.jp-Notebook .jp-Cell',
       args: { context: true }, rank: 20
     });
     app.contextMenu.addItem({
-      command: 'notebook-cell-comments:add-selection', selector: '.jp-Notebook .jp-Cell', rank: 21
+      command: 'jupyter-notebook-comments:add-selection', selector: '.jp-Notebook .jp-Cell', rank: 21
     });
-    palette?.addItem({ command: 'notebook-cell-comments:open', category: '셀 메모' });
-    palette?.addItem({ command: 'notebook-cell-comments:add', category: '셀 메모' });
+    palette?.addItem({ command: 'jupyter-notebook-comments:open', category: '셀 메모' });
+    palette?.addItem({ command: 'jupyter-notebook-comments:add', category: '셀 메모' });
 
     const installed = new WeakSet<NotebookPanel>();
     const attach = async (panel: NotebookPanel): Promise<void> => {
@@ -143,7 +143,7 @@ const plugin: JupyterFrontEndPlugin<void> = {
           badge.classList.toggle('ncc-all-resolved', open === 0);
         }
         if (tracker.currentWidget === panel) { view.setNotebook(panel); }
-        app.commands.notifyCommandChanged('notebook-cell-comments:add');
+        app.commands.notifyCommandChanged('jupyter-notebook-comments:add');
       };
       model?.contentChanged.connect(refresh);
       model?.stateChanged.connect(refresh);

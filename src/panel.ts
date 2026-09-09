@@ -56,7 +56,7 @@ export class CommentsPanel extends Widget {
 
   constructor(onClose: () => void) {
     super();
-    this.id = 'notebook-cell-comments-panel';
+    this.id = 'jupyter-notebook-comments-panel';
     this.addClass('ncc-panel');
     this.title.caption = '셀 메모';
     this.title.label = '메모';

@@ -1,3 +1,16 @@
+# v0.5.0 rename validation
+
+- `npm test`: 23 data, anchor, Markdown, and math tests passed.
+- `python -m unittest discover -s tests -p test_install.py`: 4 installation migration tests passed, including retaining the old package when the new installation fails.
+- TypeScript and prebuilt frontend production builds passed.
+- Installed legacy `notebook-cell-comments` 0.4.1, then ran the new installer from another directory in the same Python environment.
+- Confirmed `jupyter-notebook-comments` 0.5.0 and the `jupyter_notebook_comments` module are installed; the old distribution and shared extension directory are removed.
+- `jupyter labextension list`: `jupyter-notebook-comments v0.5.0 enabled OK`.
+- Notebook 7.4.4 / Chromium 149: opened the existing math example with all 5 legacy comments and 4 formula highlights intact; only one comment toolbar button appeared.
+- Verified rightmost toolbar placement, repeated panel toggle, cell/selection add actions, and no uncaught browser JavaScript errors.
+- The notebook metadata key remains `notebook_cell_comments`; `src/model.ts` and existing example metadata are unchanged.
+- Tested on Linux / Python 3.12. Windows and macOS migration were not run in this environment.
+
 # Installation script validation
 
 - Added `install.py`; frontend and package version remain 0.4.1.
