@@ -11,7 +11,7 @@ Jupyter Notebook 7에서 셀 전체 또는 셀 안의 선택한 문장·코드�
 프로젝트를 다운로드해 압축을 풀거나 저장소를 복제한 뒤 실행하세요.
 
 ```bash
-cd notebook-cell-comments
+cd jupyter-notebook-comments
 python install.py
 ```
 
